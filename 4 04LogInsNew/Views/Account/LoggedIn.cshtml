@@ -1,0 +1,9 @@
+﻿@using Library.Data;
+@model User
+
+<h3>   Welcome Back @Model.Name</h3>
+<h3> Please choose how you would like to proceed</h3>
+
+<a href="/home/upload?id=@Model.Id" class="bg-success">Upload an Image</a>
+<br />
+<a href="/account/MyImages?id=@Model.Id">View your Uploaded Images</a>

@@ -1,0 +1,18 @@
+﻿@using Library.Data;
+@using _4_04LogInsNew.Controllers
+@model IEnumerable<Images>
+
+
+@foreach (Images i in Model)
+{
+    <tr>
+        <td>
+            <img style="width: 200px;" src="/My_Images/@i.FileName" />
+            <h2>this is my image :)</h2>
+            <h2>Times Viewed: @i</h2>
+        </td>
+    </tr>
+    <br />
+    <br />
+}
+

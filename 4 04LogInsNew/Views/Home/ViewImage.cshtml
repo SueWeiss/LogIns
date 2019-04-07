@@ -1,0 +1,29 @@
+﻿@using Library.Data;
+@using _4_04LogInsNew.Models
+@model ViewModel
+
+@if (Model.ViewImage)
+{
+    <tr>
+        <td>
+            <img style="width: 200px;" src="/My_Images/@Model.ImageCurrent.FileName" />
+            <h2>this is my image :)</h2>
+            <h2>Times Viewed: @Model.ImageCurrent.TimesViewed</h2>
+        </td>
+    </tr>
+}
+
+else
+
+{
+    <div class=" alert-danger" name="tempdata-message">@Model.Message</div>
+    <form method="post" action="/home/image?image=@Model.ImageCurrent.Id">
+        <div class=" container">
+            <h4>Please enter in the password to view this image:</h4>
+            <input type="text" placeholder="Password" name="password" />
+            <input type="hidden" value="@Model.ImageCurrent.Id" />
+            <button class=" btn btn-danger" id="Submit">Submit</button>
+        </div>
+    </form>
+
+}

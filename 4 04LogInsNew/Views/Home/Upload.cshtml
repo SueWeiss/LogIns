@@ -1,0 +1,15 @@
+﻿@using _4_04LogInsNew.Controllers
+@model int
+<div class="container">
+    <form method="post" action="/home/uploading" enctype="multipart/form-data">
+        <h3>Choose your file to upload:</h3>
+        <input type="file" name="image" />
+        <br />
+        <h5>Please create a password for your file.</h5>
+        <input type="hidden" name="UserId" value="@Model" />
+        <input type="text" name="password" placeholder="Password" />
+        <br />
+        <br />
+        <button class="btn btn-danger">Upload</button>
+    </form>
+</div>
