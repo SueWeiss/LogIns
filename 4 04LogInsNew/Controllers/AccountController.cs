@@ -18,22 +18,29 @@ namespace _4_04LogInsNew.Controllers
         }
         public ActionResult LogIn()
         {
+            if (TempData["Message"] != null)
+            {
+                string message = (string)TempData["Message"];
+                return View(message);
+            }
             return View();
-                    }
-        public ActionResult LoggingIn(string email,string password )
+
+        }
+        public ActionResult LoggingIn(string email, string password)
         {
-           User user = mgr.Login(email,password );
+            User user = mgr.Login(email, password);
             if (user == null)
             {
+                TempData["Message"] = "LogIn incorrect. Please try again.";
                 return Redirect("/account/LogIn");
             }
 
             FormsAuthentication.SetAuthCookie(user.Email, true);
             return Redirect($"/account/LoggedIn?name={user.Name}&id={user.Id}");
-          
+
         }
 
-        public ActionResult LoggedIn(string name , int id)
+        public ActionResult LoggedIn(string name, int id)
         {
             User u = new User
             {
@@ -54,7 +61,7 @@ namespace _4_04LogInsNew.Controllers
 
         //[Authorize]
         public ActionResult MyImages(int id)
-        {          
+        {
             return View(mngr.MyImages(id));
         }
     }
